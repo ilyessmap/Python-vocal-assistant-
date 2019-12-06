@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 import os
 import sys 
 import speech_recognition as sr
@@ -25,11 +22,7 @@ from  pygame import mixer
 import random
 
 
-# In[3]:
-
-
 #the method which will interpret user voice response
-
 
 def mycommand():
     r=sr.Recognizer()
@@ -50,11 +43,6 @@ def mycommand():
     return command 
         
         
-
-
-# In[4]:
-
-
 #a method that will convert text to speech.
 
 def assistantTalks(audio):
@@ -63,9 +51,6 @@ def assistantTalks(audio):
     spe.save("spe.mp3")
     playSound("spe.mp3")
     
-
-
-# In[5]:
 
 
 
@@ -77,10 +62,6 @@ def playSound(file):
     mixer.music.load(file)
     mixer.music.play()
     
-
-
-# In[7]:
-
 
 def assistant(command):
     
@@ -103,11 +84,11 @@ def assistant(command):
         """ 
          day_time = int(strftime('%H'))
         if day_time < 12:
-            assistantTalks('Hello Sir. Good morning')
+            assistantTalks('Good morning')
         elif 12 <= day_time < 18:
-            assistantTalks('Hello Sir. Good afternoon')
+            assistantTalks('Good afternoon')
         else:
-            assistantTalks('Hello Sir. Good evening')
+            assistantTalks('Good evening')
         
         """
         
@@ -145,7 +126,7 @@ def assistant(command):
             print(domain)
             url = 'https://www.' + domain
             webbrowser.open(url)
-            assistantTalks('The website you have requested has been opened for you Sir.')
+            assistantTalks('The website you have requested has been opened for you.')
             
             
     elif 'email' or 'gmail' in command:
@@ -182,7 +163,7 @@ def assistant(command):
         reg_e  = re.search('play ((.+)\s)+ ', command) 
         name = reg_ex.group(1)
         path = 'C://Users//ezi//Downloads//' + name +'.mp3'
-        ## PRBOBLEM ESPACES 
+        ## PRBOBLEME: ESPACES 
         playSound(path)
     
     elif "where is" in comamnd:
@@ -211,10 +192,4 @@ mycommand()
 #loop to continue executing multiple commands
 while True:
     assistant( mycommand())
-
-
-# In[ ]:
-
-
-
 
